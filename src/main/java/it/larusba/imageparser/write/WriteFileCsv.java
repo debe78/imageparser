@@ -72,14 +72,23 @@ public class WriteFileCsv implements IWriteFile{
 			CellStyle cellStyle = workbook.createCellStyle();
 			cellStyle.setAlignment(CellStyle.ALIGN_CENTER);
 			HSSFRow row = worksheet.createRow((short) 7);
+			HSSFRow row1 = worksheet.createRow((short) 9);
+			HSSFRow row3 = worksheet.createRow((short) 11);
+			HSSFRow row4 = worksheet.createRow((short) 13);
 			
 			HSSFCell cell1 = row.createCell(0);
 			cell1.setCellStyle(cellStyle);
-			HSSFCell cell2 = row.createCell(2);
-			cell2.setCellStyle(cellStyle);
+			HSSFCell cell3 = row1.createCell(0);
+			cell3.setCellStyle(cellStyle);
+			HSSFCell cell4 = row3.createCell(0);
+			cell4.setCellStyle(cellStyle);
+			HSSFCell cell5 = row4.createCell(0);
+			cell5.setCellStyle(cellStyle);
 			
 			cell1.setCellValue(image.getNameAverageColor());
-			cell2.setCellValue(image.getIncrement());
+			cell3.setCellValue(image.getNameMaximumColor());
+			cell4.setCellValue(image.getNameMinimumColor());
+			cell5.setCellValue(image.getIncrement());
 						
 			temp[0] = image.getRgbAverageColor();
 			temp[1] = image.getRgbMinimumColor();
@@ -140,12 +149,21 @@ public class WriteFileCsv implements IWriteFile{
 			HSSFRow rowReport1 = worksheetReport.createRow((short) 2);
 			HSSFRow rowReport2 = worksheetReport.createRow((short) 4);
 			HSSFRow rowReport3 = worksheetReport.createRow((short) 6);
+			HSSFRow rowReport4 = worksheetReport.createRow((short) 8);
+			HSSFRow rowReport5 = worksheetReport.createRow((short) 10);
+			HSSFRow rowReport6 = worksheetReport.createRow((short) 12);
 			
 			worksheetReport.addMergedRegion(new CellRangeAddress(0,0,0,2));
 			worksheetReport.addMergedRegion(new CellRangeAddress(2,2,0,2));
 			worksheetReport.addMergedRegion(new CellRangeAddress(4,4,0,2));
 			worksheetReport.addMergedRegion(new CellRangeAddress(6,6,0,2));
-			worksheetReport.addMergedRegion(new CellRangeAddress(7,7,0,1));
+			worksheetReport.addMergedRegion(new CellRangeAddress(7,7,0,2));
+			worksheetReport.addMergedRegion(new CellRangeAddress(8,8,0,2));
+			worksheetReport.addMergedRegion(new CellRangeAddress(9,9,0,2));
+			worksheetReport.addMergedRegion(new CellRangeAddress(10,10,0,2));
+			worksheetReport.addMergedRegion(new CellRangeAddress(11,11,0,2));
+			worksheetReport.addMergedRegion(new CellRangeAddress(12,12,0,2));
+			worksheetReport.addMergedRegion(new CellRangeAddress(13,13,0,2));
 			
 			HSSFCell cellB1 = rowReport.createCell(0);
 			cellB1.setCellStyle(cellStyle);
@@ -155,11 +173,20 @@ public class WriteFileCsv implements IWriteFile{
 			cellB3.setCellStyle(cellStyle);
 			HSSFCell cellB4 = rowReport3.createCell(0);
 			cellB4.setCellStyle(cellStyle);
+			HSSFCell cellB5 = rowReport4.createCell(0);
+			cellB5.setCellStyle(cellStyle);
+			HSSFCell cellB6 = rowReport5.createCell(0);
+			cellB6.setCellStyle(cellStyle);
+			HSSFCell cellB7 = rowReport6.createCell(0);
+			cellB7.setCellStyle(cellStyle);
 			
 			cellB1.setCellValue("MAX RGB");
 			cellB2.setCellValue("MIN RGB");
 			cellB3.setCellValue("AVG RGB");
-			cellB4.setCellValue("NAME RGB & INCREMENT");
+			cellB4.setCellValue("NAME RGB AVG");
+			cellB5.setCellValue("NAME RGB MAX");
+			cellB6.setCellValue("NAME RGB MIN");
+			cellB7.setCellValue("INCREMENT");
 			
 			workbook.write(fileOut);
 			workbook.close();

@@ -44,12 +44,18 @@ public class WriteFileTxt implements IWriteFile{
 			 String rAvg = "AVG RED: "+image.getRgbAverageColor().getRed()+" AVG GREEN: "+image.getRgbAverageColor().getGreen()+" AVG BLUE: "+image.getRgbAverageColor().getBlue()+"\n";
 			 String rMin = "MIN RED: "+image.getRgbMinimumColor().getRed()+" MIN GREEN: "+image.getRgbMinimumColor().getGreen()+" MIN BLUE: "+image.getRgbMinimumColor().getBlue()+"\n";
 			 String rMax = "MAX RED: "+image.getRgbMaximumColor().getRed()+" MAX GREEN: "+image.getRgbMaximumColor().getGreen()+" MAX BLUE: "+image.getRgbMaximumColor().getBlue()+"\n";
-			 String rNomeInc = "RBG COLOR NAME: "+image.getNameAverageColor()+"\n INCREMENT: "+image.getIncrement();
+			 String rNameAvg = "NAME RGB AVG: "+image.getNameAverageColor()+"\n";
+			 String rNameMax = "NAME RGB MAX: "+image.getNameMaximumColor()+"\n";
+			 String rNameMin = "NAME RGB MIN: "+image.getNameMinimumColor()+"\n";
+			 String increment = "INCREMENT: "+image.getIncrement();
 			 PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file, true)));
 			 pw.print(rAvg);
 			 pw.print(rMin);
 			 pw.print(rMax);
-			 pw.print(rNomeInc);
+			 pw.print(rNameAvg);
+			 pw.print(rNameMax);
+			 pw.print(rNameMin);
+			 pw.print(increment);
 			 pw.close();
 		 }
 		 catch(Exception e)
