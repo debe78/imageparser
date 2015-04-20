@@ -1,18 +1,15 @@
 package it.larusba.imageparser.domain;
 
-import java.util.ArrayList;
 
 public class ColorDomain {
-	private int r, g, b;
+	private int red, green, blue;
 	private String name;
 
-	public ColorDomain(String name, int r, int g, int b)// Inizializzo i colori
-														// RGB e li converto da
-														// HEX a INT
+	public ColorDomain(String name, int red, int green, int blue)// Inizializzo i colori RGB e li converto da HEX a INT
 	{
-		this.r = r;
-		this.g = g;
-		this.b = b;
+		this.red = red;
+		this.green = green;
+		this.blue = blue;
 		this.name = name;
 	}
 
@@ -20,23 +17,23 @@ public class ColorDomain {
 
 	}
 
-	public int getR() {
-		return r;
+	public int getRed() {
+		return red;
 	}
 
-	public int getG() {
-		return g;
+	public int getGreen() {
+		return green;
 	}
 
-	public int getB() {
-		return b;
+	public int getBlue() {
+		return blue;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public ArrayList<ColorDomain> initColorList()// Lista colori
+/*	public ArrayList<ColorDomain> initColorList()// Lista colori
 	{
 		ArrayList<ColorDomain> colorList = new ArrayList<ColorDomain>();
 		colorList.add(new ColorDomain("AliceBlue", 0xF0, 0xF8, 0xFF));
@@ -181,32 +178,5 @@ public class ColorDomain {
 		colorList.add(new ColorDomain("Yellow", 0xFF, 0xFF, 0x00));
 		colorList.add(new ColorDomain("YellowGreen", 0x9A, 0xCD, 0x32));
 		return colorList;
-	}
-
-	public String getColorName(int r, int g, int b)// Ritorno il nome del colore
-													// medio
-	{
-		ArrayList<ColorDomain> colorList = initColorList();
-		ColorDomain trovato = null;
-		int minMSE = Integer.MAX_VALUE;
-		int mse;
-		for (ColorDomain c : colorList) {
-			mse = c.computeMSE(r, g, b);
-			if (mse < minMSE) {
-				minMSE = mse;
-				trovato = c;// Se colore trovato setto ColorName a il colore
-			}
-		}
-
-		if (trovato != null) {
-			return trovato.getName();
-		} else {
-			return "Colore non presente nella lista!";
-		}
-	}
-
-	public int computeMSE(int pixR, int pixG, int pixB) {
-		return ((pixR - r) * (pixR - r) + (pixG - g) * (pixG - g) + (pixB - b)
-				* (pixB - b)) / 3;
-	}
+	}*/
 }

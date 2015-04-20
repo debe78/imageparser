@@ -56,7 +56,7 @@ public class WriteFileCsv implements IWriteFile{
 		 } 
 		 catch (Exception e) 
 		 {
-			 e.printStackTrace();
+			 
 		 }
 	 }
  
@@ -120,7 +120,7 @@ public class WriteFileCsv implements IWriteFile{
 		 } 
 		 catch (Exception e) 
 		 {
-			 e.printStackTrace();
+			 
 		 }
 	 }
 	

@@ -67,13 +67,13 @@ public class UtilityImage {
 		int increment = 0;
 
 		if (x <= 800 || y <= 800) {
-			increment = 10;
+			increment = 1;
 		} else {
 			if ((x <= 2000 || y <= 2000) && (x >= 800 || y >= 800)) {
-				increment = 50;
+				increment = 10;
 			} else {
 				if ((x <= 5000 || y <= 5000) && (x >= 2000 || y >= 2000)) {
-					increment = 100;
+					increment = 50;
 				}
 			}
 		}
