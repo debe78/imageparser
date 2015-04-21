@@ -35,9 +35,8 @@ public class ImageColor
 	 * @param increment
 	 */
 	public ImageColor( Color rgbAverageColor, Color rgbMinimumColor,
-			Color rgbMaximumColor, String nameAverageColor,int increment) {
+			Color rgbMaximumColor, int increment) {
 		
-		this.nameAverageColor = nameAverageColor;
 		this.rgbAverageColor = rgbAverageColor;
 		this.rgbMinimumColor = rgbMinimumColor;
 		this.rgbMaximumColor = rgbMaximumColor;
