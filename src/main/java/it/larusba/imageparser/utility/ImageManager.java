@@ -102,23 +102,18 @@ public class ImageManager
 		this.utility.writeReportCSV(imageColor);
 	}
 
-	public String getColorName(int red, int green, int blue)// Ritorno il nome del colore
-	// medio
+	public String getColorName(int red, int green, int blue)// Ritorno il nome del colore medio
 	{
-		int minMSE = Integer.MAX_VALUE;
-		int mse;
-
+		int maxPixel = Integer.MAX_VALUE;
+		int valuePixel;
 		ColorDomain trovato = null;
+		for (ColorDomain colorDomain : listColor) {
+			valuePixel = ((red - colorDomain.getRed()) * (red - colorDomain.getRed()) + (green - colorDomain.getGreen()) * (green - colorDomain.getGreen()) + (blue - colorDomain.getBlue()) * (blue - colorDomain.getBlue())) / 3;
 
-		for (ColorDomain c : listColor) {
-
-			mse = ((red - c.getRed()) * (red - c.getRed()) + (green - c.getGreen()) * (green - c.getGreen()) + (blue - c.getBlue()) * (blue - c.getBlue())) / 3;
-
-			if (mse < minMSE) {
-				minMSE = mse;
-				trovato = c;
+			if (valuePixel < maxPixel) {
+				maxPixel = valuePixel;
+				trovato = colorDomain;
 			}
-
 		}
 		if (trovato != null) {
 			return trovato.getName();
@@ -127,24 +122,23 @@ public class ImageManager
 	}
 
 	public ArrayList<ColorDomain> colorList() {
-
-		int r, g, b;
+		int red, green, blue;
 		try {
 			BufferedReader input = new BufferedReader(new FileReader(
 					"/home/larus/git/imageparser/src/test/resources/color.txt"));
-			int i = 0;
+			int index = 0;
 			String line;
 			while ((line = input.readLine()) != null) {
 				String[] hex = line.split("#");
 
-				r = Integer.parseInt(hex[1].substring(0, 2), 16);
-				g = Integer.parseInt(hex[1].substring(2, 4), 16);
-				b = Integer.parseInt(hex[1].substring(4, 6), 16);
+				red = Integer.parseInt(hex[1].substring(0, 2), 16);
+				green = Integer.parseInt(hex[1].substring(2, 4), 16);
+				blue = Integer.parseInt(hex[1].substring(4, 6), 16);
 
-				ColorDomain c = new ColorDomain(line.replaceAll("#+[0-9A-z]*","").replace("\t", ""), r, g, b);
+				ColorDomain colorDomain = new ColorDomain(line.replaceAll("#+[0-9A-z]*","").replace("\t", ""), red, green, blue);
 
-				listColor.add(i, c);
-				i++;
+				listColor.add(index, colorDomain);
+				index++;
 			}
 			input.close();
 

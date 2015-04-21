@@ -175,9 +175,9 @@ public class UtilityImage {
 
 		for (int i = 0; i < y; i = i + increment) {
 			for (int j = 0; j < x; j = j + increment) {
-				Color c = mappa[j][i];
-				if (min.getRGB() > c.getRGB()) {
-					min = c;
+				Color color = mappa[j][i];
+				if (min.getRGB() > color.getRGB()) {
+					min = color;
 				}
 			}
 		}
