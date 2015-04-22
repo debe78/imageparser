@@ -6,8 +6,10 @@ import it.larusba.imageparser.exception.ImageParserException;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class ImageManager 
@@ -16,30 +18,22 @@ public class ImageManager
 	private UtilityImage utility;
 	private Color[][] mappaPixel;
 	private Color avg, min, max;
-	private ArrayList<ColorDomain> listColor = new ArrayList<ColorDomain>();
+	private ArrayList<ColorDomain> listColor = null;
 
 	public ImageManager(BufferedImage image) throws IOException //Inizializzo il bufferedImage dell'immagine letta
 	{
 		this.image = image;
-		colorList();
+		this.listColor = colorList();
 	}
 	
 	public void menuImage() throws ImageParserException//Chiamo tutti i metodi da eseguire
 	{
-		Color[] colorReport = new Color[3];
+		ImageColor imageColor = analyzeImage();
 		operationImage();
 		this.mappaPixel = getMapPixel();
 		writePixelToFile();
-		colorReport = getReportRgb(mappaPixel);
-		ImageColor imageColor = new ImageColor();
 		imageColor.setIncrement(utility.getIncrement());
-		imageColor.setNameAverageColor(getNameColor(colorReport[0]));
-		imageColor.setNameMaximumColor(getNameColor(colorReport[2]));
-		imageColor.setNameMinimumColor(getNameColor(colorReport[1]));
-		writeReport(colorReport[0], colorReport[1], colorReport[2], imageColor);
-		this.avg = colorReport[0];
-		this.max = colorReport[2];
-		this.min = colorReport[1];
+		writeReport(imageColor.getRgbAverageColor(), imageColor.getRgbMinimumColor(), imageColor.getRgbMaximumColor(), imageColor);
 	}
 	
 	public ImageColor analyzeImage() throws ImageParserException{
@@ -123,9 +117,14 @@ public class ImageManager
 
 	public ArrayList<ColorDomain> colorList() {
 		int red, green, blue;
+		ArrayList<ColorDomain> color = new ArrayList<ColorDomain>();
 		try {
-			BufferedReader input = new BufferedReader(new FileReader(
-					"/home/larus/git/imageparser/src/test/resources/color.txt"));
+
+			ClassLoader classLoader = getClass().getClassLoader();
+			File file = new File(classLoader.getResource("color.txt").getFile());
+			
+			BufferedReader input = new BufferedReader(new FileReader(file));
+			
 			int index = 0;
 			String line;
 			while ((line = input.readLine()) != null) {
@@ -137,14 +136,14 @@ public class ImageManager
 
 				ColorDomain colorDomain = new ColorDomain(line.replaceAll("#+[0-9A-z]*","").replace("\t", ""), red, green, blue);
 
-				listColor.add(index, colorDomain);
+				color.add(index, colorDomain);
 				index++;
 			}
 			input.close();
 
 		} catch (Exception e) {
 		}
-		return listColor;
+		return color;
 	}
 	
 	
