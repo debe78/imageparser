@@ -22,7 +22,9 @@ public class ImageManagerTest
 	{
 		try
 		{
-			File file = Paths.get("/home/larus/git/imageparser/src/test/resources/BlackImage.PNG").toFile();
+			ClassLoader classLoader = getClass().getClassLoader();
+			File file = new File(classLoader.getResource("BlackImage.PNG").getFile());
+			
 			ImageManager imageManager = new ImageManager(ImageIO.read(file ));
 			ImageColor analyzeImage = imageManager.analyzeImage();
 			
@@ -55,7 +57,9 @@ public class ImageManagerTest
 	{
 		try
 		{
-			File file = Paths.get("/home/larus/git/imageparser/src/test/resources/white.png").toFile();
+			ClassLoader classLoader = getClass().getClassLoader();
+			File file = new File(classLoader.getResource("white.png").getFile());
+
 			ImageManager imageManager = new ImageManager(ImageIO.read(file ));
 			ImageColor analyzeImage = imageManager.analyzeImage();
 			
@@ -88,7 +92,9 @@ public class ImageManagerTest
 	{
 		try
 		{
-			File file = Paths.get("/home/larus/git/imageparser/src/test/resources/redImage.png").toFile();
+			ClassLoader classLoader = getClass().getClassLoader();
+			File file = new File(classLoader.getResource("redImage.png").getFile());
+			
 			ImageManager imageManager = new ImageManager(ImageIO.read(file ));
 			ImageColor analyzeImage = imageManager.analyzeImage();
 			
@@ -121,7 +127,9 @@ public class ImageManagerTest
 	{
 		try
 		{
-			File file = Paths.get("/home/larus/git/imageparser/src/test/resources/greenImage.png").toFile();
+			ClassLoader classLoader = getClass().getClassLoader();
+			File file = new File(classLoader.getResource("greenImage.png").getFile());
+			
 			ImageManager imageManager = new ImageManager(ImageIO.read(file ));
 			ImageColor analyzeImage = imageManager.analyzeImage();
 			
@@ -154,7 +162,9 @@ public class ImageManagerTest
 	{
 		try
 		{
-			File file = Paths.get("/home/larus/git/imageparser/src/test/resources/blueImage.png").toFile();
+			ClassLoader classLoader = getClass().getClassLoader();
+			File file = new File(classLoader.getResource("blueImage.png").getFile());
+			
 			ImageManager imageManager = new ImageManager(ImageIO.read(file ));
 			ImageColor analyzeImage = imageManager.analyzeImage();
 			
@@ -187,7 +197,9 @@ public class ImageManagerTest
 	{
 		try
 		{
-			File file = Paths.get("/home/larus/git/imageparser/src/test/resources/onePixelWhite.png").toFile();
+			ClassLoader classLoader = getClass().getClassLoader();
+			File file = new File(classLoader.getResource("onePixelWhite.png").getFile());
+
 			ImageManager imageManager = new ImageManager(ImageIO.read(file ));
 			ImageColor analyzeImage = imageManager.analyzeImage();
 			
@@ -220,7 +232,9 @@ public class ImageManagerTest
 	{
 		try
 		{
-			File file = Paths.get("/home/larus/git/imageparser/src/test/resources/onePixelBlack.png").toFile();
+			ClassLoader classLoader = getClass().getClassLoader();
+			File file = new File(classLoader.getResource("onePixelBlack.png").getFile());
+			
 			ImageManager imageManager = new ImageManager(ImageIO.read(file ));
 			ImageColor analyzeImage = imageManager.analyzeImage();
 			
@@ -253,7 +267,9 @@ public class ImageManagerTest
 	{
 		try
 		{
-			File file = Paths.get("/home/larus/git/imageparser/src/test/resources/vincent-van-gogh-branches-of-an-almond-tree-in-red.jpg").toFile();
+			ClassLoader classLoader = getClass().getClassLoader();
+			File file = new File(classLoader.getResource("vincent-van-gogh-branches-of-an-almond-tree-in-red.jpg").getFile());
+			
 			ImageManager imageManager = new ImageManager(ImageIO.read(file ));
 			ImageColor analyzeImage = imageManager.analyzeImage();
 			
@@ -277,6 +293,7 @@ public class ImageManagerTest
 		}
 		catch(Exception e)
 		{
+			e.printStackTrace();
 			Assert.fail(e.getMessage());
 		}
 	}
@@ -286,7 +303,9 @@ public class ImageManagerTest
 	{
 		try
 		{
-			File file = Paths.get("/home/larus/git/imageparser/src/test/resources/The_Sower_-_painting_by_Van_Gogh.jpg").toFile();
+			ClassLoader classLoader = getClass().getClassLoader();
+			File file = new File(classLoader.getResource("The_Sower_-_painting_by_Van_Gogh.png").getFile());
+			
 			ImageManager imageManager = new ImageManager(ImageIO.read(file ));
 			ImageColor analyzeImage = imageManager.analyzeImage();
 			
@@ -319,7 +338,9 @@ public class ImageManagerTest
 	{
 		try
 		{
-			File file = Paths.get("/home/larus/git/imageparser/src/test/resources/van-gogh-bridge.jpg").toFile();
+			ClassLoader classLoader = getClass().getClassLoader();
+			File file = new File(classLoader.getResource("van-gogh-bridge.png").getFile());
+			
 			ImageManager imageManager = new ImageManager(ImageIO.read(file ));
 			ImageColor analyzeImage = imageManager.analyzeImage();
 			
