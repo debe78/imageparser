@@ -20,8 +20,6 @@ public class UtilityImage {
 	private Color min = new Color(255, 255, 255);
 	private Color avg = new Color(0, 0, 0);
 	private Color[][] mappaPixel;
-	private String folderResizedImage = "/home/larus/git/imageparser/src/test/resources/resize";
-	private String nameFileReport = "/home/larus/git/imageparser/src/test/resources/risultato";
 	private WriteFileService writeFile;
 
 	public UtilityImage(BufferedImage im)// Inizializzo l'immagine e setto x e y
@@ -49,8 +47,10 @@ public class UtilityImage {
 			Graphics2D ggraphics = resizeNewImage.createGraphics();
 			ggraphics.drawImage(resizedImage, 0, 0, null);
 			ggraphics.dispose();
-
-			String path = "" + folderResizedImage + File.separator
+			
+			File folder = new File("./src/test/resources/resize/");
+			
+			String path = "" + folder + File.separator
 					+ "resizeImage.jpg";
 			ImageIO.write(resizeNewImage, "jpg", new File(path));
 
@@ -134,7 +134,8 @@ public class UtilityImage {
 
 	public void initializeFile()// Inizializzare i file
 	{
-		writeFile = new WriteFileService(nameFileReport);
+		File folder = new File("./src/main/resources/risultato");
+		writeFile = new WriteFileService(""+folder);
 		writeFile.inizializeFile();
 	}
 
