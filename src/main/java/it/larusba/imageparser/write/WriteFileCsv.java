@@ -1,5 +1,5 @@
 package it.larusba.imageparser.write;
-import it.larusba.imageparser.domain.ImageColor;
+import it.larusba.imageparser.domain.ColourAnalysis;
 
 import java.awt.Color;
 import java.io.File;
@@ -60,7 +60,7 @@ public class WriteFileCsv implements IWriteFile{
 		 }
 	 }
  
-	public void saveReport(ImageColor image)//Scrivo il report dei colori AVG,MIN,MAXsu file CSV
+	public void saveReport(ColourAnalysis image)//Scrivo il report dei colori AVG,MIN,MAXsu file CSV
 	 {
 		 try 
 		 {

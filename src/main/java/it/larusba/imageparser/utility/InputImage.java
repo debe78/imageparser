@@ -1,5 +1,7 @@
 package it.larusba.imageparser.utility;
 
+import it.larusba.imageparser.service.DefaultImageManager;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.net.URL;
@@ -44,7 +46,7 @@ public class InputImage
 	
 	public void fileLocale()
 	{
-		ImageManager imageManager;
+		DefaultImageManager imageManager;
 		File in;
 		System.out.println("Inserisci l'indirizzo:");//Prendo l'immagine da locale
 		input = scan.nextLine();
@@ -53,9 +55,9 @@ public class InputImage
 		try 
 		{
 			this.image = ImageIO.read(in);
-			imageManager = new ImageManager(this.image);
+			imageManager = new DefaultImageManager(this.image);
 			System.out.println("Sto elaborando.....");
-			imageManager.menuImage();
+			//imageManager.menuImage();
 			System.out.println("Immagine analizzata correttamente!!");
 		}
 		catch (Exception e) 
@@ -66,16 +68,16 @@ public class InputImage
 	
 	public void fileUrl()
 	{
-		ImageManager imageManager;
+		DefaultImageManager imageManager;
 		System.out.println("Inserisci l'indirizzo URL:");//Prendo l'immagine da un indirizzo URL
 		input = scan.nextLine();
 		try 
 		{
 			URL url = new URL(input);
 			this.image = ImageIO.read(url);
-			imageManager = new ImageManager(this.image);
+			imageManager = new DefaultImageManager(this.image);
 			System.out.println("Sto elaborando.....");
-			imageManager.menuImage();
+			//imageManager.menuImage();
 			System.out.println("Immagine analizzata correttamente!!");
 		} 
 		catch (Exception e) 

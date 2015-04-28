@@ -1,5 +1,5 @@
 package it.larusba.imageparser.write;
-import it.larusba.imageparser.domain.ImageColor;
+import it.larusba.imageparser.domain.ColourAnalysis;
 
 import java.awt.Color;
 import java.io.BufferedWriter;
@@ -37,7 +37,7 @@ public class WriteFileTxt implements IWriteFile{
 		 }
 	 }
 	
-	public void saveReport(ImageColor image)//Scrivere report su file TXT
+	public void saveReport(ColourAnalysis image)//Scrivere report su file TXT
 	{
 		try
 		 {

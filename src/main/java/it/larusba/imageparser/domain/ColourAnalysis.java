@@ -2,8 +2,10 @@ package it.larusba.imageparser.domain;
 import java.awt.Color;
 
 
-public class ImageColor 
+public class ColourAnalysis 
 {
+	private String imageName;
+	
 	private String nameAverageColor;
 
 	private Color rgbAverageColor;
@@ -21,7 +23,7 @@ public class ImageColor
 	/**
 	 * 
 	 */
-	public ImageColor() {
+	public ColourAnalysis() {
 
 	}
    	
@@ -34,7 +36,7 @@ public class ImageColor
 	 * @param rgbMaximumColor
 	 * @param increment
 	 */
-	public ImageColor( Color rgbAverageColor, Color rgbMinimumColor,
+	public ColourAnalysis( Color rgbAverageColor, Color rgbMinimumColor,
 			Color rgbMaximumColor, int increment) {
 		
 		this.rgbAverageColor = rgbAverageColor;
@@ -110,5 +112,13 @@ public class ImageColor
 
 	public void setRgbMaximumColor(Color rgbMaximumColor) {
 		this.rgbMaximumColor = rgbMaximumColor;
+	}
+
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
 	}
 }

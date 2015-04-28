@@ -1,5 +1,5 @@
 package it.larusba.imageparser.write;
-import it.larusba.imageparser.domain.ImageColor;
+import it.larusba.imageparser.domain.ColourAnalysis;
 
 import java.awt.Color;
 
@@ -16,7 +16,7 @@ public class WriteFileService
 		writeFileCsv = new WriteFileCsv(tipo);
 	}
 	
-	public void saveReport(ImageColor image, boolean flag)
+	public void saveReport(ColourAnalysis image, boolean flag)
 	{
 		IWriteFile writeFile = null;
 		if(flag == true)

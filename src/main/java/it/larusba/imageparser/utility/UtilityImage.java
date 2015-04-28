@@ -1,6 +1,6 @@
 package it.larusba.imageparser.utility;
 
-import it.larusba.imageparser.domain.ImageColor;
+import it.larusba.imageparser.domain.ColourAnalysis;
 import it.larusba.imageparser.exception.ImageParserException;
 import it.larusba.imageparser.write.WriteFileService;
 
@@ -80,7 +80,7 @@ public class UtilityImage {
 		return increment;
 	}
 
-	public void initializeMatrix(Color[][] mappaPixel)// Inizializzare la
+	public void initializeMatrix()// Inizializzare la
 														// matrice
 	{
 		this.mappaPixel = new Color[x][y];
@@ -124,10 +124,10 @@ public class UtilityImage {
 		return count;
 	}
 
-	public void writeReportCSV(ImageColor image)// Scrivere il report su file
+	public void writeReportCSV(ColourAnalysis image)// Scrivere il report su file
 												// CSV
 	{
-		ImageColor imageImport = image;
+		ColourAnalysis imageImport = image;
 		writeFile.saveReport(imageImport, false);
 		writeFile.saveReport(imageImport, true);
 	}

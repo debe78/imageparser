@@ -1,13 +1,13 @@
 package it.larusba.imageparser;
 
 import static org.junit.Assert.assertEquals;
-import it.larusba.imageparser.domain.ImageColor;
-import it.larusba.imageparser.utility.ImageManager;
+import it.larusba.imageparser.domain.ColourAnalysis;
+import it.larusba.imageparser.service.DefaultImageManager;
 
 import java.awt.Color;
 import java.io.File;
 import java.net.URL;
-import java.nio.file.Paths;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
@@ -25,8 +25,8 @@ public class ImageManagerTest
 			ClassLoader classLoader = getClass().getClassLoader();
 			File file = new File(classLoader.getResource("BlackImage.PNG").getFile());
 			
-			ImageManager imageManager = new ImageManager(ImageIO.read(file ));
-			ImageColor analyzeImage = imageManager.analyzeImage();
+			DefaultImageManager imageManager = new DefaultImageManager(ImageIO.read(file ));
+			ColourAnalysis analyzeImage = imageManager.analyzeImage();
 			
 			Color avg = new Color(0,0,0);
 			assertEquals(analyzeImage.getRgbAverageColor(),avg);
@@ -60,8 +60,8 @@ public class ImageManagerTest
 			ClassLoader classLoader = getClass().getClassLoader();
 			File file = new File(classLoader.getResource("white.png").getFile());
 
-			ImageManager imageManager = new ImageManager(ImageIO.read(file ));
-			ImageColor analyzeImage = imageManager.analyzeImage();
+			DefaultImageManager imageManager = new DefaultImageManager(ImageIO.read(file ));
+			ColourAnalysis analyzeImage = imageManager.analyzeImage();
 			
 			System.out.println("AVG name:"+analyzeImage.getNameAverageColor());
 			System.out.println("MAX name:"+analyzeImage.getNameMaximumColor());
@@ -95,8 +95,8 @@ public class ImageManagerTest
 			ClassLoader classLoader = getClass().getClassLoader();
 			File file = new File(classLoader.getResource("redImage.png").getFile());
 			
-			ImageManager imageManager = new ImageManager(ImageIO.read(file ));
-			ImageColor analyzeImage = imageManager.analyzeImage();
+			DefaultImageManager imageManager = new DefaultImageManager(ImageIO.read(file ));
+			ColourAnalysis analyzeImage = imageManager.analyzeImage();
 			
 			System.out.println("AVG name:"+analyzeImage.getNameAverageColor());
 			System.out.println("MAX name:"+analyzeImage.getNameMaximumColor());
@@ -130,8 +130,8 @@ public class ImageManagerTest
 			ClassLoader classLoader = getClass().getClassLoader();
 			File file = new File(classLoader.getResource("greenImage.png").getFile());
 			
-			ImageManager imageManager = new ImageManager(ImageIO.read(file ));
-			ImageColor analyzeImage = imageManager.analyzeImage();
+			DefaultImageManager imageManager = new DefaultImageManager(ImageIO.read(file ));
+			ColourAnalysis analyzeImage = imageManager.analyzeImage();
 			
 			System.out.println("AVG name:"+analyzeImage.getNameAverageColor());
 			System.out.println("MAX name:"+analyzeImage.getNameMaximumColor());
@@ -165,8 +165,8 @@ public class ImageManagerTest
 			ClassLoader classLoader = getClass().getClassLoader();
 			File file = new File(classLoader.getResource("blueImage.png").getFile());
 			
-			ImageManager imageManager = new ImageManager(ImageIO.read(file ));
-			ImageColor analyzeImage = imageManager.analyzeImage();
+			DefaultImageManager imageManager = new DefaultImageManager(ImageIO.read(file ));
+			ColourAnalysis analyzeImage = imageManager.analyzeImage();
 			
 			System.out.println("AVG name:"+analyzeImage.getNameAverageColor());
 			System.out.println("MAX name:"+analyzeImage.getNameMaximumColor());
@@ -200,8 +200,8 @@ public class ImageManagerTest
 			ClassLoader classLoader = getClass().getClassLoader();
 			File file = new File(classLoader.getResource("onePixelWhite.png").getFile());
 
-			ImageManager imageManager = new ImageManager(ImageIO.read(file ));
-			ImageColor analyzeImage = imageManager.analyzeImage();
+			DefaultImageManager imageManager = new DefaultImageManager(ImageIO.read(file ));
+			ColourAnalysis analyzeImage = imageManager.analyzeImage();
 			
 			System.out.println("AVG name:"+analyzeImage.getNameAverageColor());
 			System.out.println("MAX name:"+analyzeImage.getNameMaximumColor());
@@ -235,8 +235,8 @@ public class ImageManagerTest
 			ClassLoader classLoader = getClass().getClassLoader();
 			File file = new File(classLoader.getResource("onePixelBlack.png").getFile());
 			
-			ImageManager imageManager = new ImageManager(ImageIO.read(file ));
-			ImageColor analyzeImage = imageManager.analyzeImage();
+			DefaultImageManager imageManager = new DefaultImageManager(ImageIO.read(file ));
+			ColourAnalysis analyzeImage = imageManager.analyzeImage();
 			
 			System.out.println("AVG name:"+analyzeImage.getNameAverageColor());
 			System.out.println("MAX name:"+analyzeImage.getNameMaximumColor());
@@ -270,8 +270,8 @@ public class ImageManagerTest
 			ClassLoader classLoader = getClass().getClassLoader();
 			File file = new File(classLoader.getResource("vincent-van-gogh-branches-of-an-almond-tree-in-red.jpg").getFile());
 			
-			ImageManager imageManager = new ImageManager(ImageIO.read(file ));
-			ImageColor analyzeImage = imageManager.analyzeImage();
+			DefaultImageManager imageManager = new DefaultImageManager(ImageIO.read(file ));
+			ColourAnalysis analyzeImage = imageManager.analyzeImage();
 			
 			System.out.println("AVG name:"+analyzeImage.getNameAverageColor());
 			System.out.println("MAX name:"+analyzeImage.getNameMaximumColor());
@@ -306,8 +306,8 @@ public class ImageManagerTest
 			ClassLoader classLoader = getClass().getClassLoader();
 			File file = new File(classLoader.getResource("The_Sower_-_painting_by_Van_Gogh.png").getFile());
 			
-			ImageManager imageManager = new ImageManager(ImageIO.read(file ));
-			ImageColor analyzeImage = imageManager.analyzeImage();
+			DefaultImageManager imageManager = new DefaultImageManager(ImageIO.read(file ));
+			ColourAnalysis analyzeImage = imageManager.analyzeImage();
 			
 			System.out.println("AVG name:"+analyzeImage.getNameAverageColor());
 			System.out.println("MAX name:"+analyzeImage.getNameMaximumColor());
@@ -341,8 +341,8 @@ public class ImageManagerTest
 			ClassLoader classLoader = getClass().getClassLoader();
 			File file = new File(classLoader.getResource("van-gogh-bridge.png").getFile());
 			
-			ImageManager imageManager = new ImageManager(ImageIO.read(file ));
-			ImageColor analyzeImage = imageManager.analyzeImage();
+			DefaultImageManager imageManager = new DefaultImageManager(ImageIO.read(file ));
+			ColourAnalysis analyzeImage = imageManager.analyzeImage();
 			
 			System.out.println("AVG name:"+analyzeImage.getNameAverageColor());
 			System.out.println("MAX name:"+analyzeImage.getNameMaximumColor());
@@ -374,8 +374,8 @@ public class ImageManagerTest
 		try
 		{
 			URL url = new URL("http://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Vincent_van_Gogh_-_The_yellow_house_%28%27The_street%27%29.jpg/175px-Vincent_van_Gogh_-_The_yellow_house_%28%27The_street%27%29.jpg");
-			ImageManager imageManager = new ImageManager(ImageIO.read(url ));
-			ImageColor analyzeImage = imageManager.analyzeImage();
+			DefaultImageManager imageManager = new DefaultImageManager(ImageIO.read(url ));
+			ColourAnalysis analyzeImage = imageManager.analyzeImage();
 			
 			System.out.println("AVG name:"+analyzeImage.getNameAverageColor());
 			System.out.println("MAX name:"+analyzeImage.getNameMaximumColor());
@@ -407,8 +407,8 @@ public class ImageManagerTest
 		try
 		{
 			URL url = new URL("http://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Vincent_Willem_van_Gogh_138.jpg/640px-Vincent_Willem_van_Gogh_138.jpg");
-			ImageManager imageManager = new ImageManager(ImageIO.read(url ));
-			ImageColor analyzeImage = imageManager.analyzeImage();
+			DefaultImageManager imageManager = new DefaultImageManager(ImageIO.read(url ));
+			ColourAnalysis analyzeImage = imageManager.analyzeImage();
 			
 			System.out.println("AVG name:"+analyzeImage.getNameAverageColor());
 			System.out.println("MAX name:"+analyzeImage.getNameMaximumColor());
@@ -440,8 +440,8 @@ public class ImageManagerTest
 		try
 		{
 			URL url = new URL("http://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Vincent_Willem_van_Gogh_128.jpg/640px-Vincent_Willem_van_Gogh_128.jpg");
-			ImageManager imageManager = new ImageManager(ImageIO.read(url ));
-			ImageColor analyzeImage = imageManager.analyzeImage();
+			DefaultImageManager imageManager = new DefaultImageManager(ImageIO.read(url ));
+			ColourAnalysis analyzeImage = imageManager.analyzeImage();
 			
 			System.out.println("AVG name:"+analyzeImage.getNameAverageColor());
 			System.out.println("MAX name:"+analyzeImage.getNameMaximumColor());
@@ -473,8 +473,8 @@ public class ImageManagerTest
 			try
 			{
 				URL url = new URL("http://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Vincent_Willem_van_Gogh_015.jpg/640px-Vincent_Willem_van_Gogh_015.jpg");
-				ImageManager imageManager = new ImageManager(ImageIO.read(url ));
-				ImageColor analyzeImage = imageManager.analyzeImage();
+				DefaultImageManager imageManager = new DefaultImageManager(ImageIO.read(url ));
+				ColourAnalysis analyzeImage = imageManager.analyzeImage();
 				
 				System.out.println("AVG name:"+analyzeImage.getNameAverageColor());
 				System.out.println("MAX name:"+analyzeImage.getNameMaximumColor());
@@ -506,8 +506,8 @@ public class ImageManagerTest
 			try
 			{
 				URL url = new URL("http://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Vincent_van_Gogh_-_Portret_van_de_postbode_Joseph_Roulin.jpg/640px-Vincent_van_Gogh_-_Portret_van_de_postbode_Joseph_Roulin.jpg");
-				ImageManager imageManager = new ImageManager(ImageIO.read(url ));
-				ImageColor analyzeImage = imageManager.analyzeImage();
+				DefaultImageManager imageManager = new DefaultImageManager(ImageIO.read(url ));
+				ColourAnalysis analyzeImage = imageManager.analyzeImage();
 				
 				System.out.println("AVG name:"+analyzeImage.getNameAverageColor());
 				System.out.println("MAX name:"+analyzeImage.getNameMaximumColor());
@@ -526,6 +526,37 @@ public class ImageManagerTest
 				Assert.assertEquals(analyzeImage.getNameAverageColor(), "AuroMetalSaurus");
 				Assert.assertEquals(analyzeImage.getNameMaximumColor(), "Baby powder");
 				Assert.assertEquals(analyzeImage.getNameMinimumColor(), "Black");
+			}
+			catch(Exception e)
+			{
+				Assert.fail(e.getMessage());
+			}
+		}
+		
+		
+		@Test
+		public void avgMinMaxVanGoghImage() 
+		{
+			try
+			{
+				DefaultImageManager imageManager = new DefaultImageManager(null);
+				List<ColourAnalysis> analyseVanGoghImage = imageManager.analyseVanGoghImage();
+				Assert.assertNotNull(analyseVanGoghImage);
+				
+				
+				for (ColourAnalysis imageColor : analyseVanGoghImage) {
+					
+					System.out.println("Image Name: "+imageColor.getImageName());
+					System.out.println("AVG name:"+imageColor.getNameAverageColor());
+					System.out.println("MAX name:"+imageColor.getNameMaximumColor());
+					System.out.println("MIN name:"+imageColor.getNameMinimumColor());
+					System.out.println("AVG :"+imageColor.getRgbAverageColor().toString());
+					System.out.println("Max :"+imageColor.getRgbMaximumColor().toString());
+					System.out.println("Min :"+imageColor.getRgbMinimumColor().toString());
+					System.out.println("------------------------------------------------\n");
+					
+				}
+				
 			}
 			catch(Exception e)
 			{
