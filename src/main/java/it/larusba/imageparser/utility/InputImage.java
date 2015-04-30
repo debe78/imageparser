@@ -46,7 +46,6 @@ public class InputImage
 	
 	public void fileLocale()
 	{
-		DefaultImageManager imageManager;
 		File in;
 		System.out.println("Inserisci l'indirizzo:");//Prendo l'immagine da locale
 		input = scan.nextLine();
@@ -55,7 +54,7 @@ public class InputImage
 		try 
 		{
 			this.image = ImageIO.read(in);
-			imageManager = new DefaultImageManager(this.image);
+			new DefaultImageManager(this.image);
 			System.out.println("Sto elaborando.....");
 			//imageManager.menuImage();
 			System.out.println("Immagine analizzata correttamente!!");
@@ -68,14 +67,13 @@ public class InputImage
 	
 	public void fileUrl()
 	{
-		DefaultImageManager imageManager;
 		System.out.println("Inserisci l'indirizzo URL:");//Prendo l'immagine da un indirizzo URL
 		input = scan.nextLine();
 		try 
 		{
 			URL url = new URL(input);
 			this.image = ImageIO.read(url);
-			imageManager = new DefaultImageManager(this.image);
+			new DefaultImageManager(this.image);
 			System.out.println("Sto elaborando.....");
 			//imageManager.menuImage();
 			System.out.println("Immagine analizzata correttamente!!");

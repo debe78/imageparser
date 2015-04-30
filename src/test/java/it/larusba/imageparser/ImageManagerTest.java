@@ -541,8 +541,9 @@ public class ImageManagerTest
 			{
 				DefaultImageManager imageManager = new DefaultImageManager(null);
 				List<ColourAnalysis> analyseVanGoghImage = imageManager.analyseVanGoghImage();
-				Assert.assertNotNull(analyseVanGoghImage);
 				
+				Assert.assertNotNull(analyseVanGoghImage);
+				Assert.assertEquals(827, analyseVanGoghImage.size());
 				
 				for (ColourAnalysis imageColor : analyseVanGoghImage) {
 					

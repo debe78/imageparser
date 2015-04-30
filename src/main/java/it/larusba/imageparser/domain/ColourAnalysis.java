@@ -18,6 +18,8 @@ public class ColourAnalysis
 
 	private Color rgbMaximumColor;
 	
+	private String source;
+	
 	int increment;
 
 	/**
@@ -120,5 +122,13 @@ public class ColourAnalysis
 
 	public void setImageName(String imageName) {
 		this.imageName = imageName;
+	}
+
+	public String getSource() {
+		return source;
+	}
+
+	public void setSource(String source) {
+		this.source = source;
 	}
 }

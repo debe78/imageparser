@@ -184,6 +184,19 @@ public class UtilityImage {
 		}
 		return min;
 	}
+	
+	public void writePixelToFile()//Scrivo su file tutti i pixel 
+	{
+		this.initializeFile();
+		this.writePixel(mappaPixel);
+	}
+	
+	public void writeReport(Color avg, Color min, Color max,ColourAnalysis imageColor) {
+		imageColor.setRgbAverageColor(avg);
+		imageColor.setRgbMaximumColor(max);
+		imageColor.setRgbMinimumColor(min);
+		this.writeReportCSV(imageColor);
+	}
 
 	public int getX() {
 		return image.getWidth();

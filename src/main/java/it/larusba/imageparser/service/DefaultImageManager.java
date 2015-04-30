@@ -1,3 +1,18 @@
+/**
+ * Copyright 2015 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package it.larusba.imageparser.service;
 import it.larusba.imageparser.domain.ColorDomain;
 import it.larusba.imageparser.domain.ColourAnalysis;
@@ -16,7 +31,12 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
-public class DefaultImageManager 
+/**
+ * @author Enrico De Benetti
+ * @since 30 Apr 2015
+ *
+ */
+public class DefaultImageManager implements ImageManager
 {
 	private BufferedImage image, nuovaImage;
 	private UtilityImage utility;
@@ -34,24 +54,28 @@ public class DefaultImageManager
 		
 		List<ColourAnalysis> listVanGogImageColor = new ArrayList<ColourAnalysis>();
 		
-		ColourAnalysis imageColor1 = analyseImageByUrl("http://www.vggallery.com/painting/f_0001.jpg","Still Life with Cabbage and Clogs");
-		ColourAnalysis imageColor2 = analyseImageByUrl("http://www.vggallery.com/painting/f_0063.jpg","Still Life with Earthenware, Bottle and Clogs");
 		
-		
-		
-		ColourAnalysis imageColorn = analyseImageByUrl("http://www.vggallery.com/painting/jh_add01.jpg","Bowl with Daffodils");
-		ColourAnalysis imageColorn_1 = analyseImageByUrl("http://www.vggallery.com/painting/b_0001.jpg","Vase with Flowers");
-		
-		
-		listVanGogImageColor.add(imageColor1);
-		listVanGogImageColor.add(imageColor2);
-		
-		
-		
-		listVanGogImageColor.add(imageColorn);
-		listVanGogImageColor.add(imageColorn_1);
-		
-		
+		try {
+
+			ClassLoader classLoader = getClass().getClassLoader();
+			File file = new File(classLoader.getResource("vangoghartworks.txt").getFile());
+			
+			BufferedReader input = new BufferedReader(new FileReader(file));
+			int i=0;
+			String line;
+			while ((line = input.readLine()) != null) {
+				
+				String[] splitLine = line.split("-");
+				System.out.println(++i);
+				ColourAnalysis colourAnalysis = analyseImageByUrl(splitLine[1],splitLine[0]);
+				listVanGogImageColor.add(colourAnalysis);
+			}
+			input.close();
+
+		} catch (Exception e) {
+			
+			System.out.println("errore: "+e.getMessage());
+		}	
 		return listVanGogImageColor;
 	}
 
@@ -65,15 +89,18 @@ public class DefaultImageManager
 		
 		ColourAnalysis imageColor = null;
 		
+		System.out.println("Analysing image: "+imageName+" .....");
+		
 		try {
-			
 			URL url = new URL(urlS);
 			this.image = ImageIO.read(url);
 			imageColor = analyzeImage();
 			imageColor.setImageName(imageName);
+			imageColor.setSource(urlS);
 		} 
 		catch (Exception e) 
 		{
+			e.printStackTrace();
           throw new ImageParserException(e.getMessage());			
 		}
 		
@@ -87,7 +114,6 @@ public class DefaultImageManager
 	  
 	    Color[] colorReport = new Color[3];
 		operationImage();
-		//this.mappaPixel = getMapPixel();
 		colorReport = getReportRgb(utility.pixelMatrix());
 		
 		imageColor.setNameAverageColor(getNameColor(colorReport[0]));
@@ -113,11 +139,6 @@ public class DefaultImageManager
 		return utility.pixelMatrix();
 	}
 	
-	public void writePixelToFile()//Scrivo su file tutti i pixel 
-	{
-		this.utility.initializeFile();
-		this.utility.writePixel(mappaPixel);
-	}
 	
 	public Color[] getReportRgb(Color[][] mappaPixel)//Scrivo in append, i dati di riepilogo dell'immagine
 	{
@@ -134,12 +155,6 @@ public class DefaultImageManager
 		return nome;
 	}
 
-	public void writeReport(Color avg, Color min, Color max,ColourAnalysis imageColor) {
-		imageColor.setRgbAverageColor(avg);
-		imageColor.setRgbMaximumColor(max);
-		imageColor.setRgbMinimumColor(min);
-		this.utility.writeReportCSV(imageColor);
-	}
 
 	public String getColorName(int red, int green, int blue)// Ritorno il nome del colore medio
 	{
@@ -173,8 +188,8 @@ public class DefaultImageManager
 			int index = 0;
 			String line;
 			while ((line = input.readLine()) != null) {
+				
 				String[] hex = line.split("#");
-
 				red = Integer.parseInt(hex[1].substring(0, 2), 16);
 				green = Integer.parseInt(hex[1].substring(2, 4), 16);
 				blue = Integer.parseInt(hex[1].substring(4, 6), 16);
